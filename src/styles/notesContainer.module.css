@@ -1,0 +1,22 @@
+.notes_container {
+    width: 90%;
+    /* max-width: 1700px; */
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 15px;
+}
+
+@media (min-width: 905px) {
+    .notes_container {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+}
+
+@media (min-width: 1118px) {
+    .notes_container{
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    }
+ }
