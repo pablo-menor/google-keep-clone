@@ -15,11 +15,14 @@ export const CreateNote = () => {
     const changeContent = e => {
         setContent(e.target.value)
     }
+
     const uploadNote = (e) => {
         e.preventDefault();
-        saveNote(title, content)
-        setContent('')
-        setTitle('')
+        if (content.length > 0 || title.length > 0) {
+            saveNote(title, content)
+            setContent('')
+            setTitle('')
+        }
     }
     return (
         <div className={styles.form_container}>
