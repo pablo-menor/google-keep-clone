@@ -4,7 +4,7 @@ import { saveNote } from '../firebase/db'
 import { FaPlus } from 'react-icons/fa'
 import styles from '../styles/createNote.module.css'
 
-export const CreateNote = () => {
+export const CreateNote = ({addNewNote}) => {
     const [title, setTitle] = useState('')
 
     const changeTitle = e => {
@@ -20,6 +20,7 @@ export const CreateNote = () => {
         e.preventDefault();
         if (content.length > 0 || title.length > 0) {
             saveNote(title, content)
+            addNewNote(title, content)
             setContent('')
             setTitle('')
         }
