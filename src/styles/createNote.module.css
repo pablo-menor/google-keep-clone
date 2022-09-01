@@ -55,4 +55,12 @@
     align-items: center;
     border: none;
     background-color: rgb(6, 212, 126);
+    cursor: pointer;
+}
+
+
+.editing_note{
+  position: absolute;
+  width: 100vw;
+  top: 50%;
 }

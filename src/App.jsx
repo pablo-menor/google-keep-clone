@@ -9,14 +9,14 @@ function App() {
   const [newNote, setNewNote] = useState({})
 
   const addNewNote = (title, note) => {
-    setNewNote({title, note})
+    setNewNote({ title, note })
   }
 
   return (
     <div className="App">
       <Header />
-      <CreateNote addNewNote={addNewNote}/>
-      <NotesContainer newNote={newNote}/>
+      <CreateNote addNewNote={addNewNote} />
+      <NotesContainer newNote={newNote} />
     </div>
   )
 }
