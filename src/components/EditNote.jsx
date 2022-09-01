@@ -1,10 +1,11 @@
+import { serverTimestamp } from 'firebase/firestore'
 import React, { useState, useRef } from 'react'
 import { updateNote as update } from '../firebase/db'
 
 import styles from '../styles/createNote.module.css'
 
 
-export const EditNote = ({ initialTitle, initialContent, id, close }) => {
+export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit }) => {
 
   const [title, setTitle] = useState(initialTitle)
   const [content, setContent] = useState(initialContent)
@@ -20,8 +21,9 @@ export const EditNote = ({ initialTitle, initialContent, id, close }) => {
   }
   const updateNote = async (e) => {
     e.preventDefault()
-    await update(id, {title, note: content})
-    close()
+    const newNote = {title, note: content, timestamp: serverTimestamp()}
+    await update(id, newNote) 
+    closeAndEdit({...newNote, id})
   }
 
   return (
