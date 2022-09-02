@@ -42,7 +42,7 @@ export const NotesContainer = ({ newNote }) => {
       <section className={styles.notes_container}>
         {notes.map((note, i) => <Note key={i} edit={editNote} title={note.title} content={note.note} id={note.id} />)}
       </section>
-      {showEdit && <EditNote className={styles.editing_container} initialTitle={selectedNote.title} initialContent={selectedNote.content} id={selectedNote.id} closeAndEdit={updateNotes} />}
+      {showEdit && <EditNote className={styles.editing_container} initialTitle={selectedNote.title} initialContent={selectedNote.content} id={selectedNote.id} closeAndEdit={updateNotes} close={()=> setShowEdit(false)}/>}
     </>
   )
 }
