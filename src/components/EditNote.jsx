@@ -65,7 +65,9 @@ const Mask = () => {
 const stylesMask = {
   width: '100%',
   height: '100vh',
-  backgroundColor: 'transparent',
-  position: 'absolute',
+  backgroundColor: '#ebebeb',
+  position: 'fixed',
   top: '0',
+  // backdropFilter: 'grayScale(1)',
+  opacity: 0.6
 }

@@ -60,7 +60,7 @@
 
 
 .editing_note{
-  position: absolute;
+  position: fixed;
   width: 100vw;
-  top: 50%;
+  top: 30%;
 }
