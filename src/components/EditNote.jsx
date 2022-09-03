@@ -4,6 +4,12 @@ import { updateNote as update } from '../firebase/db'
 
 import styles from '../styles/createNote.module.css'
 
+const updateButtonStyles = {
+  width: '100px',
+  borderRadius: '6px',
+  backgroundColor: 'rgb(244 206 2)',
+  fontSize:' 1.15rem'
+}
 
 export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit }) => {
 
@@ -47,7 +53,7 @@ export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit
         <form >
           <input type="text" placeholder='Title' value={title} ref={titleInput} onChange={changeTitle} />
           <textarea name="" id="" cols="30" rows="10" placeholder='Take a note...' value={content} ref={contentInput} onChange={changeContent}></textarea>
-          <button onClick={(e) => updateNote(e)}>Update</button>
+          <button style={updateButtonStyles} onClick={(e) => updateNote(e)}>Save</button>
         </form>
       </div>
     </>

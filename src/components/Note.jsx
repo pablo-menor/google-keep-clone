@@ -5,7 +5,9 @@ export const Note = ({ title, content, edit, id }) => {
     <div onClick={() => edit(title, content, id)} className={styles.note_container}>
       <h1>{title}</h1>
       <p>{content}</p>
-      
+      {!(title || content) && (
+        <div className={styles.empty}>Empty note</div>
+      )}
     </div>
   )
 }

@@ -17,3 +17,8 @@
     box-shadow: -4px 5px 8px rgb(189, 189, 189);
 
 }
+
+.empty {
+  font-size: 1.8rem;
+  color: rgb(107, 107, 107);
+}
