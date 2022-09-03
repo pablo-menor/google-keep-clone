@@ -1,6 +1,7 @@
 import { serverTimestamp } from 'firebase/firestore'
 import React, { useState, useEffect, useRef } from 'react'
 import { updateNote as update } from '../firebase/db'
+import { MdOutlineCancel } from 'react-icons/md'
 
 import styles from '../styles/createNote.module.css'
 
@@ -54,6 +55,7 @@ export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit
           <input type="text" placeholder='Title' value={title} ref={titleInput} onChange={changeTitle} />
           <textarea name="" id="" cols="30" rows="10" placeholder='Take a note...' value={content} ref={contentInput} onChange={changeContent}></textarea>
           <button style={updateButtonStyles} onClick={(e) => updateNote(e)}>Save</button>
+          <MdOutlineCancel onClick={closeWithoutEditing} style={cancelIconStyles}></MdOutlineCancel>
         </form>
       </div>
     </>
@@ -76,4 +78,14 @@ const stylesMask = {
   top: '0',
   // backdropFilter: 'grayScale(1)',
   opacity: 0.6
+}
+
+// Cancel icon styles
+const cancelIconStyles = {
+  fontSize: '2.5rem',
+  position: 'absolute',
+  right: '-15px',
+  top: '-15px',
+  color: 'rgb(74 73 70)',
+  cursor: 'pointer',
 }
