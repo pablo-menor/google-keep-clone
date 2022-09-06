@@ -1,7 +1,7 @@
 import { serverTimestamp } from 'firebase/firestore'
 import React, { useState, useEffect, useRef } from 'react'
-import { updateNote as update } from '../firebase/db'
-import { MdOutlineCancel } from 'react-icons/md'
+import { updateNote as update, deleteNote } from '../firebase/db'
+import { MdOutlineCancel, MdDelete } from 'react-icons/md'
 
 import styles from '../styles/createNote.module.css'
 
@@ -9,10 +9,10 @@ const updateButtonStyles = {
   width: '100px',
   borderRadius: '6px',
   backgroundColor: 'rgb(244 206 2)',
-  fontSize:' 1.15rem'
+  fontSize: ' 1.15rem'
 }
 
-export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit }) => {
+export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit, closeAndDelete }) => {
 
   const [title, setTitle] = useState(initialTitle)
   const [content, setContent] = useState(initialContent)
@@ -37,16 +37,20 @@ export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit
   const changeContent = (e) => {
     setContent(e.target.value)
   }
-  const updateNote = async (e) => {
+  const updateNote = (e) => {
     e.preventDefault()
     const newNote = { title, note: content, timestamp: serverTimestamp() }
-    await update(id, newNote)
+    update(id, newNote)
     closeAndEdit({ ...newNote, id })
   }
   const closeWithoutEditing = () => {
     close()
   }
 
+  const deleteNoteById = () => {
+    deleteNote(id)
+    closeAndDelete(id)
+  }
   return (
     <>
       <Mask></Mask>
@@ -57,6 +61,7 @@ export const EditNote = ({ initialTitle, initialContent, id, close, closeAndEdit
           <button style={updateButtonStyles} onClick={(e) => updateNote(e)}>Save</button>
           <MdOutlineCancel onClick={closeWithoutEditing} style={cancelIconStyles}></MdOutlineCancel>
         </form>
+        <MdDelete style={deleteIconStyles} onClick={deleteNoteById}></MdDelete>
       </div>
     </>
   )
@@ -80,6 +85,7 @@ const stylesMask = {
   opacity: 0.6
 }
 
+
 // Cancel icon styles
 const cancelIconStyles = {
   fontSize: '2.5rem',
@@ -87,5 +93,15 @@ const cancelIconStyles = {
   right: '-15px',
   top: '-15px',
   color: 'rgb(74 73 70)',
+  cursor: 'pointer',
+}
+
+// Delete icon styles
+const deleteIconStyles = {
+  fontSize: '70px',
+  position: 'fixed',
+  right: 'calc(50vw - 35px)',
+  top: '60vh',
+  color: '#f33434',
   cursor: 'pointer',
 }

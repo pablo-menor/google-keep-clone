@@ -1,5 +1,5 @@
 import { db } from './firebase.js'
-import { collection, addDoc, getDocs, orderBy, query, serverTimestamp, updateDoc, doc } from "firebase/firestore"
+import { collection, addDoc, getDocs, orderBy, query, serverTimestamp, updateDoc, doc, deleteDoc } from "firebase/firestore"
 
 export const saveNote = async (title, note) => {
     try {
@@ -24,5 +24,9 @@ export const getAllNotes = async () => {
 }
 
 export const updateNote = async (id, newNote) => {
-  updateDoc(doc(db, "notes", id), newNote)
+ await updateDoc(doc(db, "notes", id), newNote)
+}
+
+export const deleteNote = async (id) => {
+  await deleteDoc(doc(db, "notes", id))
 }
