@@ -4,3 +4,19 @@
     justify-content: center;
     height: 150px;
 }
+
+.author{
+  position: absolute;
+  right: 5vw;
+  top: 20px;
+  font-size: 1.3rem;
+}
+
+.author a {
+  color: #000000
+}
+
+.github{
+  font-size: 2rem;
+  cursor: pointer;
+}
